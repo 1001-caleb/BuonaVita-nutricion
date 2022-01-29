@@ -27,12 +27,20 @@ for (var i = 0; i < pacientes.length; i++){
     }
     calcularIMC(peso, altura);
 
+    pesoEsValido = true;
+    alturaEsValida = true;
     function validarPesoAltura() {
         if (peso <= 0 || peso >= 400) {
-            alert("El peso no puede ser menor a cero, ni mayor a 400")
+            // alert("El peso no puede ser menor a cero, ni mayor a 400");
+            tdIMC.textContent = "peso incorrecto";
+            pesoEsValido = false;
+            paciente.classList.add("valor-incorrecto");
         }
         if (altura <= 0 || altura >= 2.50) {
-            alert("La altura no puede ser menor a cero ni mayor a 2.50m")
+            // alert("La altura no puede ser menor a cero ni mayor a 2.50m");
+            tdIMC.textContent = "Altura incorrecta";
+            alturaEsValida = false;
+            paciente.classList.add("valor-incorrecto");
         }
     }
     validarPesoAltura();
