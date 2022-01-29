@@ -17,6 +17,7 @@ console.log(altura)
 function calcularIMC (peso, altura){
     var resultadoImc = peso / (altura*altura);
     console.log(resultadoImc);
+    var mandarInfo = document.querySelector(".info-imc").innerHTML = (resultadoImc);
 }
 
 calcularIMC(peso, altura);
