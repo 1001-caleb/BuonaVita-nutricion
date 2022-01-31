@@ -133,6 +133,6 @@ button[disabled=disabled], button:disabled {
 	border: 1px solid red;
 }
 
-.valor-incorrecto{
+.paciente-incorrecto{
 	background-color: lightcoral;
 }
