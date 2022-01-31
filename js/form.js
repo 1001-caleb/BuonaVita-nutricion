@@ -4,16 +4,16 @@ botonAdicionar.addEventListener("click", function (event) {
     event.preventDefault();
 
     var form = document.querySelector("#form-adicionar");
-    var paciente = caprturarDatosPacientes(form);
+    var paciente = capturarDatosPacientes(form);
     var pacienteTr = construirTr(paciente);
     var tabla = document.querySelector("#tabla-pacientes");
     
 
     tabla.appendChild(pacienteTr);
-
+    form.reset();
 });
 
-function caprturarDatosPacientes(form) {
+function capturarDatosPacientes(form) {
     //capturando los datos del form
     var paciente = {
         nombre : form.nombre.value,
@@ -30,16 +30,16 @@ function construirTr(paciente){
         var pacienteTr = document.createElement("tr");
         pacienteTr.classList.add("paciente");
 
-        var nombreTd = document.createElement("td");
-        nombreTd.classList.add("info-nombre");
-        var alturaTd = document.createElement("td");
-        alturaTd.classList.add("info-altura");
-        var pesoTd = document.createElement("td");
-        pesoTd.classList.add("info-peso");
-        var gorduraTd = document.createElement("td");
-        gorduraTd.classList.add("info-gordura");
-        var imcTd = document.createElement("td");
-        imcTd.classList.add("info-imc");
+        var nombreTd = construitTd(paciente.nombre, "info-nombre");
+        // nombreTd.classList.add("info-nombre");
+        var pesoTd = construitTd(paciente.peso, "info-peso");
+        // alturaTd.classList.add("info-altura");
+        var alturaTd = construitTd(paciente.altura, "info-altura");
+        // pesoTd.classList.add("info-peso");
+        var gorduraTd = construitTd(paciente.gordura, "info-gordura");
+        // gorduraTd.classList.add("info-gordura");
+        var imcTd = construitTd(paciente.imc, "info-imc");
+        // imcTd.classList.add("info-imc");
     
         //asignar los valores a textcontent
         nombreTd.textContent = paciente.nombre;
@@ -56,4 +56,11 @@ function construirTr(paciente){
         pacienteTr.appendChild(imcTd);
 
         return pacienteTr;
+}
+
+function construitTd(dato, clase){
+    var td = document.createElement("td");
+    td.classList.add(clase);
+    td.textContent = dato;
+     return td;
 }
