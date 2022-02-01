@@ -13,10 +13,12 @@ botonAdicionar.addEventListener("click", function (event) {
         return;
     }
     var tabla = document.querySelector("#tabla-pacientes");
-    
-
     tabla.appendChild(pacienteTr);
     form.reset();
+
+    //borrando mensajes de error
+    var mensajesErrores = document.querySelector("#mensajes-errores");
+   mensajesErrores.innerHTML = "";  
 });
 
 function capturarDatosPacientes(form) {
@@ -73,6 +75,21 @@ function construitTd(dato, clase){
 
 function validarPaciente(paciente){
     var errores = [];
+    //validando que no esten vacios los campos
+    if (paciente.nombre.length == 0){
+        errores.push("El nombre no puede estar vacio");
+    }
+    if (paciente.peso.length == 0){
+        errores.push("El peso no puede estar vacio");
+    }
+    if (paciente.altura.length == 0){
+        errores.push("La altura no puede estar vacia");
+    }
+    if (paciente.gordura.length == 0){
+        errores.push("El porcentaje de gordura no puede estar vacio");
+    }
+
+    //validando peso y altura
     if (!validarPeso(paciente.peso)){
         errores.push("Peso ingresado incorrecto");
     }
@@ -84,7 +101,7 @@ function validarPaciente(paciente){
 
 function exhibirMensajesErrores(errores){
     var ul = document.querySelector("#mensajes-errores");
-
+    ul.innerHTML = ""
     errores.forEach(function(error){
         var li = document.createElement("li");
         li.textContent = error;
