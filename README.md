@@ -1,2 +1,2 @@
 # BuonaVita-nutricion
-Proyecto del curso introducción a Javascript de Alura
+>CRUD sencillo realizado durante las clases de JavaScript de Alura.
